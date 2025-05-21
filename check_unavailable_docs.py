@@ -50,7 +50,7 @@ def check_urls(input_file, output_file):
             soup = BeautifulSoup(response.text, 'html.parser')
             
             # Check if "Document Unavailable" is in the page
-            if "We're sorry, your institution doesn't have access to this article through ProQuest" in response.text:
+            if "We're sorry, your institution doesn't have access to this article through ProQuest" in response.text or "Document Unavailable" in response.text:
                 unavailable_urls.append(url)
                 print(f"[{i}/{total_urls}] Found unavailable document: {url}")
             else:
